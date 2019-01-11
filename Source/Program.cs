@@ -236,16 +236,13 @@ namespace DevicePortalTool
                 {
                     invalidReason = "must specify http or https scheme";
                 }
-                else if (targetDevice.IsDefaultPort)
-                {
-                    invalidReason = "doesn't specify a WDP port number";
-                }
 
                 if (invalidReason != null)
                 {
                     Console.Out.WriteLine("Invalid parameters: IP address '" + address + "'; " + invalidReason);
-                    Console.Out.WriteLine("IP address must be in the following format: http(s)://<host address>:<WDP port>");
-                    Console.Out.WriteLine("The correct address string can be found under 'Developer' settings on the host device");
+                    Console.Out.WriteLine("IP address must be in the following format: http(s)://<host address>[:<WDP port>]");
+                    Console.Out.WriteLine("Refer to the Microsoft DevicePortal documentation for instructions to find the connection address for the specific device.");
+                    Console.Out.WriteLine("NOTE: On Desktop and some other devices, the WDP port is required");
                     Console.Out.WriteLine();
                     return ProgramErrorCodes.InvalidParameters;
                 }
