@@ -57,7 +57,6 @@
     <Compile Include="Source\AppxManifest.cs" />
     <Compile Include="Source\PackageHelper.cs" />
     <Compile Include="Source\ParameterHelper.cs" />
-    <Compile Include="WindowsDevicePortalWrapper\AppDeployment.cs" />
     <Compile Include="WindowsDevicePortalWrapper\ApplicationManager.cs" />
     <Compile Include="WindowsDevicePortalWrapper\CertificateHandling.cs" />
     <Compile Include="WindowsDevicePortalWrapper\Core\AppCrashDumpCollection.cs" />
