@@ -385,7 +385,8 @@ namespace DevicePortalTool
                         {
                             Console.Out.WriteLine("Uninstalling package: " + package.FullName);
                         }
-                        Task uninstallTask = _portal.UninstallApplicationAsync(package.FullName);
+
+                        _portal.UninstallApplicationAsync(package.FullName).Wait();
                     }
                     catch (AggregateException ex)
                     {
@@ -677,7 +678,7 @@ namespace DevicePortalTool
                 matchingPackages =
                     (from package in packagesTask.Result.Packages
                      where
-                         package.Name == packageId.PackageName &&
+                         package.AppId == packageId.LaunchId &&
                          package.Publisher == package.Publisher
                      select package).ToList();
 
