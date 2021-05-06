@@ -1,0 +1,35 @@
+build:
+  name: Build DevicePortalTool
+
+  agent:
+    type: Unity::VM
+    image: build-system/unity-extra-windows-10-katana:v0.4.4-699775
+    flavor: b1.xlarge
+
+  commands:
+    - perl build.pl
+
+  artifacts:
+    artifacts:
+      paths:
+        - builds/**
+
+complete_build:
+  name: Build DevicePortalTool - ACompleteBuild
+  
+  agent:
+    type: Unity::VM
+    image: build-system/unity-extra-ubuntu-18.04-katana:v0.2-592517
+    flavor: b1.xlarge
+    
+  dependencies:
+    - .yamato/build.yml#build
+    
+  commands:
+    - perl create_zip.pl
+    
+  artifacts:
+    artifacts:
+      paths:
+        - binaries/builds.zip
+      
